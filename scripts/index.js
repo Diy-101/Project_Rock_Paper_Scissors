@@ -1,35 +1,87 @@
 
 
 function getComputerChoice() {
-    let array = ["rock", "paper", "scissors"];
+    let array = ["Rock", "Paper", "Scissors"];
     let result = array[Math.floor(Math.random() * 3)];
     return result; 
 }
 
 
 function playRound(playerSelection, computerSelection) {
-    let player = playerSelection.toLowerCase()
+    let player = playerSelection.toLowerCase();
+    let computer = computerSelection.toLowerCase();
+    if (computer == player) return "Draw!";
 
-    if (computerSelection == player) return "Draw!";
-
-    else if (computerSelection == "rock") {
-        if (player == "paper") return "You WIN! Paper beats Rock";
-        else if (player == "scissors") return "You LOSE! Rock beats Scissors";
+    else if (computer == "rock") {
+        if (player == "paper") return "WIN";
+        else if (player == "scissors") return "LOSE";
     }
 
-    else if (computerSelection == "paper") {
-        if (player == "scissors") return "You WIN! Scissors beats Paper"
-        else if (player == "rock") return "You LOSE! Paper beats Rock"
+    else if (computer == "paper") {
+        if (player == "scissors") return "WIN";
+        else if (player == "rock") return "LOSE";
     }
 
-    else if (computerSelection == "scissors") {
-        if (player == "rock") return "You WIN! Rock beats Scissors"
-        else if (player == "paper") return "You LOSE! Scissors beats Paper"
+    else if (computer == "scissors") {
+        if (player == "rock") return "WIN";
+        else if (player == "paper") return "LOSE";
   }
-  return 
+  return "ERROR"
 }
   
-  const playerSelection = "ROCK";
-  const computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
+  function playgame() {
+    let computerCount = 0, playerCount = 0;
+
+    for (let i = 0; i < 5; ++i) {
+        const playerSelection = prompt("Input Rock, Paper or Scissors:");
+        const computerSelection = getComputerChoice();
+        const answer = playRound(playerSelection, computerSelection)
+        if (answer == "Draw!") {
+            console.log("Draw!");
+            computerCount += 1;
+            playerCount += 1;
+            console.log(`You: ${playerCount}`);
+            console.log(`Computer: ${computerCount}`);
+            console.log("");
+        } else if (answer == "WIN"){
+            console.log(`You WIN! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
+            playerCount += 1;
+            console.log(`You: ${playerCount}`);
+            console.log(`Computer: ${computerCount}`);
+            console.log("");
+        } else if (answer == "LOSE") {
+            console.log(`You LOSE! ${computerSelection} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1)}`);
+            computerCount += 1;
+            console.log(`You: ${playerCount}`);
+            console.log(`Computer: ${computerCount}`);
+            console.log("");
+        } else {
+            console.log(answer);
+            console.log("")
+            console.log("GAME OVER")
+            return
+        }
+    }
+    if (computerCount > playerCount) {
+        console.log(`You: ${playerCount}`)
+        console.log(`Computer: ${computerCount}`)
+        console.log("Computer WIN")
+        console.log("")
+        console.log("GAME OVER")
+    } else if (computerCount < playerCount) {
+        console.log(`You: ${playerCount}`)
+        console.log(`Computer: ${computerCount}`)
+        console.log("You WIN")
+        console.log("")
+        console.log("GAME OVER")
+    } else {
+        console.log(`You: ${playerCount}`)
+        console.log(`Computer: ${computerCount}`)
+        console.log("Draw!")
+        console.log("")
+        console.log("GAME OVER")
+    }
+    return
+  }
+    
   
