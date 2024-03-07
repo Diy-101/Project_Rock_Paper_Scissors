@@ -1,10 +1,44 @@
 
-
 function getComputerChoice() {
     let array = ["Rock", "Paper", "Scissors"];
     let result = array[Math.floor(Math.random() * 3)];
     return result; 
 }
+
+function playerResylt(reply) {
+    if (reply == "WIN") {
+        const display = document.querySelector('.display');
+        const question = display.firstElementChild;
+        const answer = document.createElement('h2');
+        const score = document.querySelector('#yourScore');
+
+        answer.textContent = 'You win!'
+
+        display.replaceChild(answer, question); 
+        score.textContent = Number(score.innerHTML) + 1 
+    }
+    else if (reply == "LOSE") {
+        const display = document.querySelector('.display');
+        const question = display.firstElementChild;
+        const answer = document.createElement('h2');
+        const score = document.querySelector('#compScore');
+
+        answer.textContent = 'You lose!'
+
+        display.replaceChild(answer, question); 
+        score.textContent = Number(score.innerHTML) + 1 
+    }
+    else if (reply == "Draw!") {
+        const display = document.querySelector('.display');
+        const question = display.firstElementChild;
+        const answer = document.createElement('h2');
+    
+        answer.textContent = 'Draw!'
+
+        display.replaceChild(answer, question); 
+    }
+}
+
 
 
 function playRound(playerSelection, computerSelection) {
@@ -26,62 +60,26 @@ function playRound(playerSelection, computerSelection) {
         if (player == "rock") return "WIN";
         else if (player == "paper") return "LOSE";
   }
-  return "ERROR"
 }
   
-  function playgame() {
-    let computerCount = 0, playerCount = 0;
+  const btnrock = document.querySelector('#rock');
+  btnrock.addEventListener('click', (e) => {
+    let answer = playRound(e.target.id, getComputerChoice());
+    playerResylt(answer)
+  })
 
-    for (let i = 0; i < 5; ++i) {
-        const playerSelection = prompt("Input Rock, Paper or Scissors:");
-        const computerSelection = getComputerChoice();
-        const answer = playRound(playerSelection, computerSelection)
-        if (answer == "Draw!") {
-            console.log("Draw!");
-            computerCount += 1;
-            playerCount += 1;
-            console.log(`You: ${playerCount}`);
-            console.log(`Computer: ${computerCount}`);
-            console.log("");
-        } else if (answer == "WIN"){
-            console.log(`You WIN! ${playerSelection[0].toUpperCase() + playerSelection.slice(1)} beats ${computerSelection}`);
-            playerCount += 1;
-            console.log(`You: ${playerCount}`);
-            console.log(`Computer: ${computerCount}`);
-            console.log("");
-        } else if (answer == "LOSE") {
-            console.log(`You LOSE! ${computerSelection} beats ${playerSelection[0].toUpperCase() + playerSelection.slice(1)}`);
-            computerCount += 1;
-            console.log(`You: ${playerCount}`);
-            console.log(`Computer: ${computerCount}`);
-            console.log("");
-        } else {
-            console.log(answer);
-            console.log("")
-            console.log("GAME OVER")
-            return
-        }
-    }
-    if (computerCount > playerCount) {
-        console.log(`You: ${playerCount}`)
-        console.log(`Computer: ${computerCount}`)
-        console.log("Computer WIN")
-        console.log("")
-        console.log("GAME OVER")
-    } else if (computerCount < playerCount) {
-        console.log(`You: ${playerCount}`)
-        console.log(`Computer: ${computerCount}`)
-        console.log("You WIN")
-        console.log("")
-        console.log("GAME OVER")
-    } else {
-        console.log(`You: ${playerCount}`)
-        console.log(`Computer: ${computerCount}`)
-        console.log("Draw!")
-        console.log("")
-        console.log("GAME OVER")
-    }
-    return
-  }
+  const btnpaper = document.querySelector('#paper');
+  btnpaper.addEventListener('click', (e) => {
+    let answer = playRound(e.target.id, getComputerChoice());
+    playerResylt(answer)
+  })
+
+  const btnscissors = document.querySelector('#scissors');
+  btnscissors.addEventListener('click', (e) => {
+    let answer = playRound(e.target.id, getComputerChoice());
+    playerResylt(answer)
+  })
+    
+
     
   

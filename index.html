@@ -1,13 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styles/index.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="/styles/index.css" />
+  </head>
+  <body>
+    <h1 id="headOne">Rock Paper Scissors</h1>
+    <div class="main">
+      <div class="display">
+        <img src="/images/question.png" alt="" id="question"/>
+      </div>
+      <div class="buttonsAndScore">
+        <div id="you" class="score">
+            <h2> You</h2>
+            <h2>Score</h2>
+            <h2 id="yourScore">0</h2>
+        </div>
+        <div class="buttons">
+          <div class="button">
+            <button class="btn btnrock">
+              <img
+                src="/images/Rock-removebg-preview.png"
+                alt=""
+                class="btnImg"
+                id="rock"
+              />
+            </button>
+            <h2 class="texth2">Rock</h2>
+          </div>
+          <div class="button">
+            <button class="btn btnpaper">
+              <img
+                src="/images/Paper-removebg-preview (1).png"
+                alt=""
+                class="btnImg"
+                id="paper"
+              />
+            </button>
+            <h2 class="texth2">Paper</h2>
+          </div>
+          <div class="button">
+            <button class="btn btnscissor">
+              <img
+                src="/images/Scissors-removebg-preview.png"
+                alt=""
+                class="btnImg"
+                id="scissors"
+              />
+            </button>
+            <h2 class="texth2">Scissors</h2>
+          </div>
+        </div>
+        <div id="Comp" class="score">
+            <h2>Comp</h2>
+            <h2>Score</h2>
+            <h2 id="compScore">0</h2>
+        </div>
+      </div>
+    </div>
     <script src="/scripts/index.js"></script>
-</body>
+  </body>
 </html>
