@@ -4,29 +4,46 @@ function getComputerChoice() {
     let result = array[Math.floor(Math.random() * 3)];
     return result; 
 }
+function showPopup() {
+  const score_comp = document.querySelector('#compScore');
+  const score_your = document.querySelector('#yourScore');
+    if (score_your.innerHTML == "5") {
+      const popupOverlay = document.getElementById("popup-overlay");
+      const result = document.getElementById('result');
+      result.textContent = "You win this Game!"
+      popupOverlay.style.display = "block";
+    }
+    else if (score_comp.innerHTML == "5") {
+      const popupOverlay = document.getElementById("popup-overlay");
+      const result = document.getElementById('result');
+      result.textContent = "You lose this Game!"
+      popupOverlay.style.display = "block";
+    };
+  }
 
 function playerResylt(reply) {
+  showPopup()
+    const score_comp = document.querySelector('#compScore');
+    const score_your = document.querySelector('#yourScore');
     if (reply == "WIN") {
         const display = document.querySelector('.display');
         const question = display.firstElementChild;
         const answer = document.createElement('h2');
-        const score = document.querySelector('#yourScore');
 
         answer.textContent = 'You win!'
 
         display.replaceChild(answer, question); 
-        score.textContent = Number(score.innerHTML) + 1 
+        score_your.textContent = Number(score_your.innerHTML) + 1 
     }
     else if (reply == "LOSE") {
         const display = document.querySelector('.display');
         const question = display.firstElementChild;
         const answer = document.createElement('h2');
-        const score = document.querySelector('#compScore');
 
         answer.textContent = 'You lose!'
 
         display.replaceChild(answer, question); 
-        score.textContent = Number(score.innerHTML) + 1 
+        score_comp.textContent = Number(score_comp.innerHTML) + 1 
     }
     else if (reply == "Draw!") {
         const display = document.querySelector('.display');
@@ -60,8 +77,8 @@ function playRound(playerSelection, computerSelection) {
         if (player == "rock") return "WIN";
         else if (player == "paper") return "LOSE";
   }
-}
-  
+} 
+
   const btnrock = document.querySelector('#rock');
   btnrock.addEventListener('click', (e) => {
     let answer = playRound(e.target.id, getComputerChoice());
